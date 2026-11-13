@@ -72,9 +72,9 @@
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          "Name": fields.name.input.value.trim(),
-          "Business Name": fields.businessName.input.value.trim(),
-          "Business Email": fields.email.input.value.trim().toLowerCase(),
+          name: fields.name.input.value.trim(),
+          businessName: fields.businessName.input.value.trim(),
+          email: fields.email.input.value.trim().toLowerCase(),
           interests: interestInputs.filter((input) => input.checked).map((input) => input.value),
           source: "Project #173",
           campaignTag: "B4 You Hire 2027 Campaign"
