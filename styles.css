@@ -216,6 +216,32 @@ form { margin-top: 34px; }
 
 .interest-group:has(input[aria-invalid="true"]) .checkbox-option { border-color: #ff6d86; }
 
+.consent-option {
+  min-height: 44px;
+  margin: 22px 0 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.consent-option input {
+  width: 20px;
+  min-height: 20px;
+  margin: 2px 0 0;
+  padding: 0;
+  accent-color: var(--purple);
+  flex: 0 0 auto;
+}
+
+.consent-option span {
+  color: #c9c9ce;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.65;
+}
+
 label {
   display: block;
   margin-bottom: 9px;
