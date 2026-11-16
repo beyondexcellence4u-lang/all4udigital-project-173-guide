@@ -8,6 +8,7 @@
   const controls = Array.from(form.querySelectorAll("input, button"));
   const status = document.querySelector("#form-status");
   const interestInputs = Array.from(form.querySelectorAll("input[name='interests']"));
+  const marketingConsent = form.querySelector("#marketingConsent");
   const interestsError = document.querySelector("#interests-error");
   const fields = {
     name: { input: document.querySelector("#name"), error: document.querySelector("#name-error"), label: "Name" },
@@ -15,6 +16,7 @@
     email: { input: document.querySelector("#email"), error: document.querySelector("#email-error"), label: "Email" }
   };
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const consentText = "By checking this box, I agree to receive email and SMS messages from Beyond Excellence 4U LLC / All4UDigital. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out of SMS messages or use the unsubscribe link in any email. Consent is not a condition of purchase.";
 
   function showError(field, message) {
     field.error.textContent = message;
@@ -60,7 +62,7 @@
     }
 
     controls.forEach((control) => { control.disabled = true; });
-    button.querySelector("span:first-child").textContent = "Preparing access…";
+    button.querySelector("span:first-child").textContent = "Preparing your guide…";
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 12000);
 
@@ -76,6 +78,9 @@
           businessName: fields.businessName.input.value.trim(),
           email: fields.email.input.value.trim().toLowerCase(),
           interests: interestInputs.filter((input) => input.checked).map((input) => input.value),
+          marketingConsent: marketingConsent.checked,
+          consentText,
+          consentCapturedAt: new Date().toISOString(),
           source: "Project #173",
           campaignTag: "B4 You Hire 2027 Campaign"
         }),
@@ -91,7 +96,7 @@
     } finally {
       window.clearTimeout(timeout);
       controls.forEach((control) => { control.disabled = false; });
-      button.querySelector("span:first-child").textContent = "Get private access";
+      button.querySelector("span:first-child").textContent = "Get the guide";
     }
   });
 })();
